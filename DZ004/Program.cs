@@ -30,22 +30,23 @@ int [] CheckUniqArray (int [] arr)
     
 }
 
-void Printarr (int[,,] arr )
+void PrintArray (int [,,] arr)
 {
     for (int i = 0; i < arr.GetLength(0); i++)
     {
-        for (int j = 0; j < arr.GetLength(1); j++)
-        {
+            string strTab = "";
             for (int h = 0; h < arr.GetLength(2); h++)
             {
-                Console.Write(arr [i,j,h]+"   ");
+                string str = "";
+                for (int j = 0; j < arr.GetLength(1); j++)
+                {
+                    str += String.Format("[{0},{1},{2}]={3, -6}",
+                        i, j, h, arr[i, j, h]);
+                }
+                Console.WriteLine(strTab + str);
+                strTab += "   ";
             }
-            System.Console.WriteLine();
-        }
-        System.Console.WriteLine();
-        
-
-       
+            Console.WriteLine();
     }
 }
 
@@ -75,6 +76,5 @@ int numbers = line*column*hi;
 int [] matrix = new int [numbers];
 matrix = FillArray(numbers);
 CheckUniqArray(matrix);
-CreateCube(matrix, line, column, hi);
-Printarr(matrix);
+PrintArray(CreateCube(matrix, line, column, hi));
 
